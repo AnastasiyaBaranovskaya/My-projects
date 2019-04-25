@@ -1,0 +1,427 @@
+@media only screen and (max-width:1750px){
+    .section-article::after {
+       display: none;
+    }
+    .container-after-article::after{
+        display: none;
+    }
+    .article-2::before {
+        display:none;
+    }
+    .device-container {
+        left:-10%;
+    }
+}
+@media only screen and (max-width:1650px){
+    .device-container {
+        left:-15%;
+    }
+    .section-article {
+        padding: 50px 70px 50px 70px;
+    }
+    .wrapper-slider {
+        width: 50%;
+        padding-left: 250px;
+    }
+    .section-partners {
+        width: 94%;
+    }
+    .menu-general {
+        padding: 50px 0 0 150px;
+    }
+}
+@media only screen and (max-width:1300px){
+    .device-img {
+        right: 60px;
+        top: -100px;
+    }
+    .device-container {
+        width: 40%;
+    }
+    .section-article {
+        padding: 50px 20px 50px 20px;
+    }
+    .nav-item {
+        margin-right: 10px;
+    }
+    .menu-general {
+        padding: 50px 0 0 50px;
+    }
+}
+@media only screen and (max-width:1200px){
+    .article-container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .article-1{
+        width: 40%;
+        margin-right: 40px;
+    }
+    .article-2{
+        width: 50%;
+    }
+    .article-3{
+        width: 50%;
+        margin-top: 30px;
+    }
+    .section-article {
+        padding: 30px 20px;
+    }
+    .container-after-article {
+        padding-top: 50px;
+    }
+    header {
+    padding: 2% 2% 0;
+    }
+}
+@media only screen and (max-width:1000px){
+    .main-img-section {
+        height: 450px;
+    }
+    h1{
+        font-size: 2.75rem;
+    }
+    h2{
+        font-size: 2.1rem;
+    }
+    h3 {
+        font-size: 1.3rem;
+    }
+    .price-container h2 {
+        font-size: 2.1rem;
+    }
+    .price-container h3 {
+        font-size: 1.7rem;
+    }
+    a {
+        font-size: 0.7rem;
+    }
+    h5 {
+        font-size: 1.05rem;
+    }
+    h4 {
+        font-size: 1.3rem;
+    }
+    .slides h4 {
+        font-size: 1.2rem;
+    }
+    .wrapper-slider {
+        padding-left: 100px;
+        margin-top: 0;
+        width: 60%;
+    }
+    .device-section {
+        padding: 100px 0 100px 0;
+    }
+    .device-container {
+        width: 50%;
+        left:-24%
+    }
+    .macbook{
+        width: 70%;
+    }
+    .device-img {
+        right: -40px;
+        top: -26px;
+    }
+    .price-container {
+        padding: 40px 0;
+    }
+    .section-privacy {
+        margin: 20px 0;
+    }
+    .img-partners{
+        display: none;
+    }
+    button {
+        width: 76px;
+        height: 32px;
+        font-size: 0.8rem;
+    }
+    .main-button-section {
+        padding-top: 40px;
+    }
+    .big-button {
+        width: 180px;
+        height: 46px;
+        font-size: 1rem;
+    }
+    .button-donate {
+        width: 130px;
+        height: 46px;
+        font-size: 1rem;
+        margin-left: 10px;
+    }
+    .article-1 {
+        width: 48%;
+        margin-right: 16px;
+    }
+    article{
+        border-top: 1px solid;
+        border-bottom: 1px solid;
+        padding: 10px 0;
+    }
+    .article-3 {
+        width: 70%;
+        margin-top: 30px;
+    }
+}
+@media only screen and (max-width:900px){
+    footer{
+        display:flex;
+    }
+    .footer-nav{
+        display: none;
+    }
+    .main-img-section {
+        height: 500px;
+    }
+    h1{
+        font-size: 2.5rem;
+    }
+    h2{
+        font-size: 2rem;
+    }
+    h3 {
+        font-size: 1.7rem;
+    }
+    a {
+        font-size: 0.7rem;
+    }
+    h5 {
+        font-size: 1.05rem;
+    }
+    h4 {
+        font-size: 1.3rem;
+    }
+    .slides h4 {
+        font-size: 1.2rem;
+    }
+    .section-article {
+        padding: 0;
+    }
+    .article-1, .article-2, .article-3 {
+        width: 80%;
+        margin: 0 20px 20px;
+    }
+    .container-after-article {
+        padding: 0 10px;
+        width: 90%;
+    }
+    .transparent-button {
+        width: 276px;
+        height: 50px;
+        background-color: #fff;
+        background: none;
+        color: #858688;
+        border: 1px solid #858688;
+        margin: 10px 0;
+        position: static;
+    }
+    #triangle-topleft {
+        border-top: 100px solid #ffffff;
+    }
+    .device-img {
+        right: -216px;
+        top: 18px;
+    }
+    .macbook {
+        width: 60%;
+    }
+    .section-partners::after,.section-partners::before{
+        display: none;
+    }
+    .section-partners {
+        width: 100%;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+    .menu-general {
+        padding: 10px;
+    }
+    .footer-section {
+        width: 50%;
+    }
+    .nav-item{
+        display:none;
+    }
+    .menu-btn{
+        display:block;
+    }
+    .footer-section {
+        border:0;
+        padding-right: 10px;
+    }
+}
+@media only screen and (max-width:800px){
+    .device-section {
+        padding: 0;
+    }
+    .store{
+        width:30%;
+    }
+    .price-container {
+        padding: 60px 0 40px 0;
+    }
+    .device-container {
+        margin-top: 46px;
+    width: 80%;
+    position: static;
+    }
+    .device-img {
+    display:none;
+    }
+    .price-container {
+        padding: 60px 0 20px 0;
+    }
+}
+@media only screen and (max-width:700px){
+    header {
+        padding: 4% 4% 0;
+    }
+    .main-img-section {
+        height: 350px;
+    }
+    h1{
+        font-size: 1.5rem;
+        line-height: 20px;
+    }
+    h2{
+        font-size: 1.3rem;
+    }
+    h3 {
+        font-size: 1.1rem;
+    }
+    a {
+        font-size: 0.4rem;
+    }
+    .interface-menu a {
+        margin-right: 2px;
+    }
+    .interface-menu a::after {
+        margin-left: 2px;
+    }
+    .fa-sign-in-alt {
+        width: 12px;
+        height: 12px;
+    }
+    .sing-in a {
+        margin: 0 0 0 10px;
+        font-size: 0.55rem;
+    }
+    .big-button {
+        width: 130px;
+        height: 30px;
+        font-size: 0.8rem;
+    }
+    .button-media-device {
+        width: 30px;
+        height: 30px;
+        margin-left: 10px;
+    }
+    .fa-apple, .fa-google-play {
+        width: 20px;
+        height: 16px;
+    }
+    .fa-cloud-upload-alt, .fa-dollar-sign {
+        width: 14px;
+        height: 10px;
+    }
+    .social-icons {
+        right: 10px;
+    }
+    .fa-google-plus-square, .fa-facebook-square, .fa-twitter-square {
+        width: 16px;
+        height: 16px;
+        margin-bottom: 6px;
+    }
+    .img-article {
+        width: 15%;
+    }
+    h5 {
+        font-size: 0.9rem;
+    }
+    h4 {
+        font-size: 1rem;
+    }
+    h6 {
+        font-size: 0.8rem;
+    }
+    body {
+        font-size: 0.6rem;
+    }
+    .transparent-button {
+        width: 180px;
+        height: 40px;
+    }
+    .container-after-article {
+        padding: 0px 0 0 40px;
+        text-align:center;
+        width: 80%;
+    }
+    .main-text {
+        padding-top: 0;
+    }
+    .button-sing{
+        display:none;
+    }
+    .slides h4 {
+        font-size: 0.9rem;
+    }
+    .wrapper-slider {
+        padding-left: 20px;
+        margin-top: 0;
+        width: 90%;
+    }
+    #triangle-topleft {
+        border-top: 50px solid #ffffff;
+    }
+    .price-container {
+        padding: 20px 0 20px 0;
+    }
+    .price-container h2 {
+        font-size: 1.8rem;
+    }
+    .price-container h3 {
+        font-size: 1rem;
+    }
+    .privacy-button {
+        margin-top: 10px;
+    }
+    .button-donate {
+        width: 80px;
+        height: 30px;
+        font-size: 0.8rem;
+    }
+    .section-partners {
+        width: 100%;
+        padding: 0 10px;
+    }
+    .legal-list, .neutonmail-list {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+        border-top: 1px solid;
+    }
+    .company-list{
+    display: flex;
+    flex-direction: column;
+    }
+    .first-menu-section, .second-menu-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .second-menu-section {
+        width: 100%;
+    }
+    .menu-general {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+    .footer-section {
+        width: 100%;
+    }
+}
