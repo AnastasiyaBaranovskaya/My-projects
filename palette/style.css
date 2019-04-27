@@ -1,0 +1,79 @@
+body{
+    margin: 0 auto;
+}
+h1{
+    margin: 0;
+    font-size: 26px;
+    font-family: "Arial", serif;
+    font-weight: 400;
+}
+a{
+    margin-right: 15px;
+}
+p{
+    font-size: 18px;
+    color: gray;
+}
+.nav{
+    display: flex;
+    align-items: center;
+}
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+}
+main{
+    display: flex;
+    justify-content: space-between;
+    padding: 80px 40px;
+}
+.tools{
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+}
+.container-canvas{
+    width: 60%;
+}
+.container-pallete, .container-colors{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid grey;
+}
+.container-pallete{
+    margin-bottom: 100px;
+}
+button{
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 0;
+}
+.img-tools{
+    margin: 10px 40px 10px 10px;
+}
+.canvas-items{
+    width: 17vw;
+    height: 30vh;
+    background-color: aqua;
+}
+.current-circle, .blue-circle, .red-circle, .prev-circle  {
+    width: 20px;
+    height: 20px;
+    background: grey;
+    border-radius: 50px;
+    border: 2px solid #7e7e7e;
+    margin-right: 10px;
+}
+.prev-circle {
+    background: aqua;
+}
+.red-circle {
+    background: red;
+}
+.blue-circle {
+    background: blue;
+}
