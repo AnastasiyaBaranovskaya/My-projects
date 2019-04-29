@@ -6,6 +6,7 @@ var curColor = document.querySelector(".current-circle");
 var prevColor = document.querySelector(".prev-circle");
 const trans = document.querySelector(".transform");
 const move = document.querySelector(".move");
+const chooseCol = document.querySelector(".choose-color");
 
 pan.addEventListener('click', changeColor);
 
@@ -18,9 +19,11 @@ function color_red(e){
 for (let i=0; i < canvas.length; i++){
     canvas[i].addEventListener('click', paint);
 }
-
 function paint(e){
     e.target.style.backgroundColor = 'red';
+    for (let i=0; i < canvas.length; i++){
+      canvas[i].removeEventListener('click', paint);
+  }
 }
 }
 
@@ -35,6 +38,9 @@ for (let i=0; i < canvas.length; i++){
 
 function paint(e){
     e.target.style.backgroundColor = 'blue';
+    for (let i=0; i < canvas.length; i++){
+      canvas[i].removeEventListener('click', paint);
+  }
 }
 }
 }
@@ -60,6 +66,10 @@ canvas[i].onmousedown = function(e) {
       document.onmousemove = null;
       canvas[i].onmouseup = null;
     }
+    for (let i=0; i < canvas.length; i++){
+    canvas[i].onmousedown = null;
+
+    }
   }
 }
 }
@@ -71,5 +81,20 @@ for (let i=0; i < canvas.length; i++){
 }
 function transorm(e){
     e.target.style.borderRadius = '50%';
+    for (let i=0; i < canvas.length; i++){
+      canvas[i].removeEventListener('click', transorm);
+  }
+}
+}
+chooseCol.addEventListener('click', ChooseColor);
+function ChooseColor(e){
+  for (let i=0; i < canvas.length; i++){
+    canvas[i].addEventListener('click', savecolor);
+  }
+  function savecolor(e){
+    curColor.style.backgroundColor = e.target.style.backgroundColor;
+    for (let i=0; i < canvas.length; i++){
+      canvas[i].removeEventListener('click', savecolor);
+    }
 }
 }
