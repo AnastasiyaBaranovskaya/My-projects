@@ -24,11 +24,12 @@ header{
     justify-content: space-between;
     padding: 10px;
     align-items: center;
+    box-shadow: 0 0 10px darkgrey;
 }
 main{
     display: flex;
     justify-content: space-between;
-    padding: 80px 40px;
+    padding: 60px 40px;
 }
 .tools{
     display: flex;
@@ -41,10 +42,15 @@ main{
 .container-pallete, .container-colors{
     display: flex;
     flex-direction: column;
-    border: 1px solid grey;
+    padding: 10px;
+    border: 2px solid lightgrey;
+    border-radius: 20px;
 }
 .container-pallete{
-    margin-bottom: 100px;
+    margin-bottom: 50px;
+}
+.choose-color, .prev-color{
+    border-bottom: 2px solid lightgrey;
 }
 button{
     display: flex;
@@ -60,20 +66,11 @@ button{
     height: 28vh;
     background-color: #a7a2a2;
 }
-.current-circle, .blue-circle, .red-circle, .prev-circle  {
+.current-circle, .circle, .prev-circle {
     width: 20px;
     height: 20px;
     background: #a7a2a2;
     border-radius: 50px;
     border: 2px solid #7e7e7e;
     margin-right: 10px;
-}
-.prev-circle {
-    background: aqua;
-}
-.red-circle {
-    background: red;
-}
-.blue-circle {
-    background: blue;
 }
