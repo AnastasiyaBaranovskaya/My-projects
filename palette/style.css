@@ -11,8 +11,9 @@ a{
     margin-right: 15px;
 }
 p{
-    font-size: 18px;
+    font-size: 20px;
     color: gray;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .nav{
     display: flex;
@@ -29,7 +30,7 @@ header{
 main{
     display: flex;
     justify-content: space-between;
-    padding: 60px 40px;
+    padding: 6% 4%;
 }
 .tools{
     display: flex;
@@ -42,12 +43,12 @@ main{
 .container-pallete, .container-colors{
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 4%;
     border: 2px solid lightgrey;
-    border-radius: 20px;
+    border-radius: 10%;
 }
 .container-pallete{
-    margin-bottom: 50px;
+    margin-bottom: 10%;
 }
 .choose-color, .prev-color{
     border-bottom: 2px solid lightgrey;
@@ -59,7 +60,7 @@ button{
     border: 0;
 }
 .img-tools{
-    margin: 10px 40px 10px 10px;
+    margin-right: 10%;
 }
 .canvas-items{
     width: 16vw;
@@ -67,10 +68,15 @@ button{
     background-color: #a7a2a2;
 }
 .current-circle, .circle, .prev-circle {
-    width: 20px;
-    height: 20px;
+    width: 2vw;
+    height: 3vh;
     background: #a7a2a2;
-    border-radius: 50px;
+    border-radius: 50%;
     border: 2px solid #7e7e7e;
-    margin-right: 10px;
+    margin-right: 10%;
+}
+.current-color, .color-static, .prev-color, .paint-tool, .choose-color, .move, .transform {
+    display: flex;
+    align-items: center;
+    padding-left: 10%;
 }
