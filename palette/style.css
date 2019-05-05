@@ -70,10 +70,21 @@ button{
 .current-circle, .circle, .prev-circle {
     width: 2vw;
     height: 3vh;
-    background: #a7a2a2;
     border-radius: 50%;
     border: 2px solid #7e7e7e;
     margin-right: 10%;
+}
+#red-color{
+    background-color: red;
+}
+#lightblue-color{
+    background-color: lightblue;
+}
+#green-color{
+    background-color: lightgreen;
+}
+#yellow-color{
+    background-color: yellow;
 }
 .current-color, .color-static, .prev-color, .paint-tool, .choose-color, .move, .transform {
     display: flex;
