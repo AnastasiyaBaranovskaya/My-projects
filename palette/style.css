@@ -56,7 +56,7 @@ main{
 button{
     display: flex;
     align-items: center;
-    background-color: #ffffff;
+    background-color: white;
     border: 0;
 }
 .img-tools{
@@ -65,13 +65,13 @@ button{
 .canvas-items{
     width: 16vw;
     height: 28vh;
-    background-color: #a7a2a2;
+    background-color: lightgray;
 }
 .current-circle, .circle, .prev-circle {
     width: 2vw;
-    height: 3vh;
+    height: 4vh;
     border-radius: 50%;
-    border: 2px solid #7e7e7e;
+    border: 2px solid lightslategrey;
     margin-right: 10%;
 }
 #red-color{

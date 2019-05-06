@@ -1,9 +1,3 @@
-/* eslint-disable prefer-template */
-/* eslint-disable func-names */
-/* eslint-disable no-shadow */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-inner-declarations */
-/* eslint-disable no-plusplus */
 const canvas = document.querySelectorAll('.canvas-items');
 const color = document.querySelectorAll('.color-static');
 const pan = document.querySelector('.paint-tool');
@@ -28,24 +22,24 @@ function paint(e) {
     canvas[i].removeEventListener('click', paint);
   }
 }
-function changeColor(e) {
+function changeColor() {
   for (let i = 0; i < canvas.length; i++) {
     canvas[i].addEventListener('click', paint);
   }
 }
-function ChangeCurColor(e) {
+function ChangeCurColor() {
   curColor.style.backgroundColor = prevbutton.firstElementChild.style.backgroundColor;
 }
 for (let i = 0; i < color.length; i++) {
-  color[i].addEventListener('click', addColor);
   var n = ["red", "lightblue", "lightgreen", "yellow"]
   function addColor() {
     prevColor.style.backgroundColor = curColor.style.backgroundColor;
     curColor.style.backgroundColor = n[i];
   }
+  color[i].addEventListener('click', addColor);
 }
 // Move Tool
-function moveCanvas(e) {
+function moveCanvas() {
   for (let i = 0; i < canvas.length; i++) {
     canvas[i].onmousedown = function (e) {
       canvas[i].style.position = 'absolute';
@@ -70,7 +64,7 @@ function moveCanvas(e) {
   }
 }
 // Transformation
-function Changeform(e) {
+function Changeform() {
   function transform(e) {
     e.target.style.borderRadius = '50%';
     for (let i = 0; i < canvas.length; i++) {
@@ -82,7 +76,7 @@ function Changeform(e) {
   }
 }
 // Choose color
-function ChooseColor(e) {
+function ChooseColor() {
   function savecolor(e) {
     curColor.style.backgroundColor = e.target.style.backgroundColor;
     for (let i = 0; i < canvas.length; i++) {
