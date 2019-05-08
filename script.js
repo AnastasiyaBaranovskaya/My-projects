@@ -1,8 +1,18 @@
-const ytForm = document.getElementById('yt-form');
-const keywordInput = document.getElementById('keyword-input');
-const videoList = document.getElementById('videoListContainer');
-const buttonsContainer = document.getElementById('buttonsContainer');
-
+const ytForm = document.createElement('form');
+document.body.insertBefore(ytForm, document.body.firstChild);
+const p = document.createElement('p');
+const keywordInput = document.createElement('input');
+keywordInput.setAttribute('type', 'text');
+keywordInput.setAttribute('placeholder', "Enter keyword");
+keywordInput.className = "keyword-input";
+p.appendChild(keywordInput);
+ytForm.appendChild(p);
+const videoList = document.createElement('div');
+const buttonsContainer = document.createElement('div');
+document.body.appendChild(videoList);
+videoList.className = "video-container";
+document.body.appendChild(buttonsContainer);
+buttonsContainer.className = "slaider";
 const ITEMS_REQUESTED = 26;
 const CARDS_PER_SLIDE = 4;
  
@@ -27,19 +37,13 @@ function execute(searchQuery) {
         if (this.readyState == 4 && this.status == 200) {
             const result = this.response && JSON.parse(this.response);
             const list = result.items;
-           // var newElement = document.createElement('ul');
-            //let toRender = "";
             for(var i in list) {
                 if(list[i].snippet && list[i].id && list[i].id.videoId) {
                     console.log(list[i]);
-                    //toRender += '<li>'+ list[i].snippet.title +'('+ list[i].id.videoId +')</li>';
                 } else {
                     console.warn(list[i])
                 }
             }
-            //newElement.innerHTML = toRender;
-            //videoList.appendChild(newElement);
-            
             renderButtons(CARDS_PER_SLIDE, list);
             renderSlide(0, CARDS_PER_SLIDE, list);
         }
@@ -53,6 +57,8 @@ function prepareCardData(snippet, video) {
     return {
         id: video.videoId,
         title: snippet.title,
+        datepub: snippet.publishedAt,
+        channel: snippet.channelTitle,
         description: snippet.description,
         publicationDate: snippet.publishedAt,
         imageUrl: snippet.thumbnails.default.url
@@ -60,17 +66,27 @@ function prepareCardData(snippet, video) {
 }
 function renderCard(data) {
     const wrapper = document.createElement('div');
+    wrapper.className = "wrapper";
     const img = document.createElement('img');
     img.src = data.imageUrl;
-    const title = document.createElement('h3');
+    const title = document.createElement('a');
     title.innerText = data.title;
-    const description = document.createElement('a');
+    const channelname = document.createElement('h3');
+    channelname.innerText = data.channel;
+    const datapublish = document.createElement('h3');
+    datapublish.innerText = data.datepub;
+    const description = document.createElement('h4');
     description.innerText = data.description;
-    description.href = "https://www.youtube.com/watch?v=" + data.id;
+    title.href = "https://www.youtube.com/watch?v=" + data.id;
 
     wrapper.appendChild(img);
-    wrapper.appendChild(title)
-    wrapper.appendChild(description)
+    wrapper.appendChild(title);
+    wrapper.appendChild(channelname);
+    channelname.className = "author";
+    wrapper.appendChild(datapublish);
+    datapublish.className = "datapub";
+    wrapper.appendChild(description);
+
 
     return wrapper;
 }
@@ -90,12 +106,12 @@ function renderSlide(position, itemsPerSlide, list) {
 function renderButtons(itemsPerSlide, list) {
     const buttonsCount = Math.ceil(list.length / itemsPerSlide);
     buttonsContainer.innerHTML = "";
-    for(let index = 0; index < buttonsCount; index++) {
+    for(let index = 1; index < buttonsCount; index++) {
         const button = document.createElement('button');
         button.dataset.slide = index;
-        button.innerText = "Slide " + index;
+        button.innerText = index;
         button.addEventListener('click', function(e) {
-            renderSlide(index, itemsPerSlide, list);
+            renderSlide(index-1, itemsPerSlide, list);
         })
         buttonsContainer.appendChild(button);
     }
