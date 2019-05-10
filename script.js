@@ -13,8 +13,31 @@ document.body.appendChild(videoList);
 videoList.className = "video-container";
 document.body.appendChild(buttonsContainer);
 buttonsContainer.className = "slaider";
-const ITEMS_REQUESTED = 26;
-const CARDS_PER_SLIDE = 4;
+const ITEMS_REQUESTED = 16;
+var CARDS_PER_SLIDE = 4;
+
+function myFunction(x) {
+    if (x.matches) { 
+        CARDS_PER_SLIDE = 2;
+    } 
+}
+  var x = window.matchMedia("(max-width: 1200px)")
+  myFunction(x) 
+  x.addListener(myFunction) 
+  function myFunction(x) {
+    if (x.matches) { 
+        CARDS_PER_SLIDE = 2;
+    } 
+}
+function myFun(y) {
+    if (y.matches) { 
+        CARDS_PER_SLIDE = 1;
+    } 
+}
+  var y = window.matchMedia("(max-width: 500px)")
+  myFun(y) 
+  y.addListener(myFun) 
+
  
 ytForm.addEventListener('submit', e => {
     e.preventDefault();
@@ -24,7 +47,7 @@ ytForm.addEventListener('submit', e => {
 function execute(searchQuery) {
     var xhr = new XMLHttpRequest();
     const baseUrl = "https://www.googleapis.com/youtube/v3/search";
-    const queryList = "maxResults=" + ITEMS_REQUESTED + "&part=snippet&q=" + searchQuery + "&key=AIzaSyDn2Ybd0qz5tdqoC8AU8_ucMLj3mC6XOzc";
+    const queryList = "maxResults=" + ITEMS_REQUESTED + "&part=snippet&q=" + searchQuery + "&order=rating" + "&key=AIzaSyDn2Ybd0qz5tdqoC8AU8_ucMLj3mC6XOzc";
     const url = baseUrl + "?" + queryList;
 
     xhr.open('GET', url, true);
@@ -60,7 +83,6 @@ function prepareCardData(snippet, video) {
         datepub: snippet.publishedAt,
         channel: snippet.channelTitle,
         description: snippet.description,
-        publicationDate: snippet.publishedAt,
         imageUrl: snippet.thumbnails.default.url
     }
 }
@@ -74,7 +96,9 @@ function renderCard(data) {
     const channelname = document.createElement('h3');
     channelname.innerText = data.channel;
     const datapublish = document.createElement('h3');
-    datapublish.innerText = data.datepub;
+    const now = new Date(Date.parse(data.datepub)); 
+    const d = now.getFullYear() + "-" +(now.getMonth()+1) + "-" + now.getDate();
+    datapublish.innerText = d;
     const description = document.createElement('h4');
     description.innerText = data.description;
     title.href = "https://www.youtube.com/watch?v=" + data.id;
@@ -116,4 +140,3 @@ function renderButtons(itemsPerSlide, list) {
         buttonsContainer.appendChild(button);
     }
 }
-
