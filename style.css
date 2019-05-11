@@ -2,6 +2,7 @@ body{
     margin: 0 auto;
     background-color: #353333;
     font-family: "Arial", serif;
+    overflow-x: hidden;
 }
 form{
     display: flex;
@@ -42,6 +43,8 @@ h4{
     display: flex;
     margin: 0 0 40px 20px;
     height: 70vh;
+    --n: 1;
+    transform: translate(calc(var(--i, 0)/var(--n)*-100%));
 }
 .wrapper{
     display: flex;

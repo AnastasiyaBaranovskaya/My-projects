@@ -1,50 +1,48 @@
 const ytForm = document.createElement('form');
-document.body.insertBefore(ytForm, document.body.firstChild);
-const p = document.createElement('p');
+const wrapInput = document.createElement('p');
 const keywordInput = document.createElement('input');
-keywordInput.setAttribute('type', 'text');
-keywordInput.setAttribute('placeholder', "Enter keyword");
-keywordInput.className = "keyword-input";
-p.appendChild(keywordInput);
-ytForm.appendChild(p);
-const videoList = document.createElement('div');
 const buttonsContainer = document.createElement('div');
-document.body.appendChild(videoList);
-videoList.className = "video-container";
-document.body.appendChild(buttonsContainer);
-buttonsContainer.className = "slaider";
+const videoList = document.createElement('div');
 const ITEMS_REQUESTED = 16;
 var CARDS_PER_SLIDE = 4;
+const width1200 = window.matchMedia("(max-width: 1200px)");
+const width500 = window.matchMedia("(max-width: 500px)");
+function init(){
+    document.body.insertBefore(ytForm, document.body.firstChild);
+    keywordInput.setAttribute('type', 'text');
+    keywordInput.setAttribute('placeholder', "Enter keyword");
+    keywordInput.className = "keyword-input";
+    wrapInput.appendChild(keywordInput);
+    ytForm.appendChild(wrapInput);
+    document.body.appendChild(videoList);
+    videoList.className = "video-container";
+    document.body.appendChild(buttonsContainer);
+    buttonsContainer.className = "slaider";
 
-function myFunction(x) {
-    if (x.matches) { 
-        CARDS_PER_SLIDE = 2;
-    } 
-}
-  var x = window.matchMedia("(max-width: 1200px)")
-  myFunction(x) 
-  x.addListener(myFunction) 
-  function myFunction(x) {
-    if (x.matches) { 
-        CARDS_PER_SLIDE = 2;
-    } 
-}
-function myFun(y) {
-    if (y.matches) { 
-        CARDS_PER_SLIDE = 1;
-    } 
-}
-  var y = window.matchMedia("(max-width: 500px)")
-  myFun(y) 
-  y.addListener(myFun) 
+    function changeWidth(width1200) {
+        if (width1200.matches) { 
+            CARDS_PER_SLIDE = 2;
+        }
+    }
+    changeWidth(width1200); 
+    width1200.addListener(changeWidth);
 
- 
-ytForm.addEventListener('submit', e => {
-    e.preventDefault();
-    execute(keywordInput.value);
-});
+    function changeWidthmobile(width500) {
+        if (width500.matches) { 
+            CARDS_PER_SLIDE = 1;
+        } 
+    }
+    changeWidthmobile(width500); 
+    width500.addListener(changeWidthmobile);
 
+    ytForm.addEventListener('submit', e => {
+        e.preventDefault();
+        execute(keywordInput.value);
+    });
+}
+init();
 function execute(searchQuery) {
+    return new Promise(function(resolve, reject) {
     var xhr = new XMLHttpRequest();
     const baseUrl = "https://www.googleapis.com/youtube/v3/search";
     const queryList = "maxResults=" + ITEMS_REQUESTED + "&part=snippet&q=" + searchQuery + "&order=rating" + "&key=AIzaSyDn2Ybd0qz5tdqoC8AU8_ucMLj3mC6XOzc";
@@ -56,25 +54,24 @@ function execute(searchQuery) {
         alert('Giving up :( Cannot create an XMLHTTP instance');
         return false;
     }
-    xhr.onreadystatechange = function(){
-        if (this.readyState == 4 && this.status == 200) {
+    xhr.onload = function(){
+        if (this.status == 200) {
+            resolve(this.response)
             const result = this.response && JSON.parse(this.response);
             const list = result.items;
-            for(var i in list) {
-                if(list[i].snippet && list[i].id && list[i].id.videoId) {
-                    console.log(list[i]);
-                } else {
-                    console.warn(list[i])
-                }
-            }
             renderButtons(CARDS_PER_SLIDE, list);
             renderSlide(0, CARDS_PER_SLIDE, list);
-        }
+        } else{
+            var error = new Error(this.statusText);
+            error.code = this.status;
+            reject(error); 
+        }      
     };
     xhr.onerror = function() {
-        alert( 'Ошибка ' + this.status );
+        reject(new Error("Network Error"));
     }
     xhr.send();
+    });
 }
 function prepareCardData(snippet, video) {
     return {
@@ -111,14 +108,14 @@ function renderCard(data) {
     datapublish.className = "datapub";
     wrapper.appendChild(description);
 
-
     return wrapper;
 }
-function renderSlide(position, itemsPerSlide, list) {
-    videoList.innerHTML = "";
-
-    const offset = position * itemsPerSlide;   
-    const newList = list.slice(offset, offset + itemsPerSlide); 
+function renderSlide(position, CARDS_PER_SLIDE, list) {
+    while (videoList.firstChild){
+    videoList.removeChild(videoList.firstChild);
+    }
+    const offset = position * CARDS_PER_SLIDE;   
+    const newList = list.slice(offset, offset + CARDS_PER_SLIDE); 
 
     newList.forEach(function(item) {
         const cardData = prepareCardData(item.snippet, item.id);
@@ -126,16 +123,18 @@ function renderSlide(position, itemsPerSlide, list) {
         videoList.appendChild(card);
     })
 }
-
-function renderButtons(itemsPerSlide, list) {
-    const buttonsCount = Math.ceil(list.length / itemsPerSlide);
-    buttonsContainer.innerHTML = "";
+renderSlide();
+function renderButtons(CARDS_PER_SLIDE, list) {
+    const buttonsCount = Math.ceil(list.length / CARDS_PER_SLIDE);
+    while (buttonsContainer.firstChild){
+        buttonsContainer.removeChild(buttonsContainer.firstChild);
+    }
     for(let index = 1; index < buttonsCount; index++) {
         const button = document.createElement('button');
         button.dataset.slide = index;
         button.innerText = index;
-        button.addEventListener('click', function(e) {
-            renderSlide(index-1, itemsPerSlide, list);
+        button.addEventListener('click', function() {
+            renderSlide(index-1, CARDS_PER_SLIDE, list);
         })
         buttonsContainer.appendChild(button);
     }
