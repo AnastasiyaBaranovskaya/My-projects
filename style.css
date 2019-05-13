@@ -41,23 +41,30 @@ h4{
 }
 .video-container{
     display: flex;
-    margin: 0 0 40px 20px;
     height: 70vh;
     --n: 1;
     transform: translate(calc(var(--i, 0)/var(--n)*-100%));
+    width: 9999px;
+    overflow: hidden;
+    transition: margin-left 550ms;
+}
+.video-wrapper{
+    position: relative;
 }
 .wrapper{
     display: flex;
     flex-direction: column;
     position: relative;
-    width: 20%;
-    margin: 0 2%;
-    background-color: white;
-    border-radius: 6px;
+    width: 22vw;
+    margin: 0 1.1vw;
+    background-color: #eeefec;
+    border-radius: 14px;
     padding: 6px;
+    box-shadow: 0px 0px 20px 6px #9e9e9e;
 }
 img{
     height: 30vh;
+    border-radius: 10px;
 }
 a{
     
@@ -104,11 +111,8 @@ button{
     opacity: 0.6;
     margin: 0 10px;
 }
+
 @media only screen and (max-width:1200px){
-    .wrapper{
-        width: 33%;
-        margin: 0 8%;
-    }
     a{
         top: 10%;
         font-size: 22px;
@@ -116,8 +120,8 @@ button{
 }
 @media only screen and (max-width:1000px){
     .wrapper{
-        width: 40%;
-        margin: 0 4%;
+        width: 40vw;
+        margin: 0px 4vw;
     }
     a{
         top: 10%;
@@ -126,8 +130,8 @@ button{
 }
 @media only screen and (max-width:500px){
     .wrapper{
-        width: 76%;
-        margin: 0 10%;
+        width: 80vw;
+        margin: 0px 8vw;
     }
     a{
         top: 10%;
