@@ -42,8 +42,7 @@ h4{
 .video-container{
     display: flex;
     height: 70vh;
-    --n: 1;
-    transform: translate(calc(var(--i, 0)/var(--n)*-100%));
+    padding: 20px 0;
     width: 9999px;
     overflow: hidden;
     transition: margin-left 550ms;
@@ -88,6 +87,7 @@ a{
 .slaider{
     display: flex;
     justify-content: center;
+    margin-top: 40px;
 }
 button{
     border-radius: 50%;
@@ -121,7 +121,7 @@ button{
 @media only screen and (max-width:1000px){
     .wrapper{
         width: 40vw;
-        margin: 0px 4vw;
+        margin: 0px 4.2vw;
     }
     a{
         top: 10%;
@@ -131,7 +131,7 @@ button{
 @media only screen and (max-width:500px){
     .wrapper{
         width: 80vw;
-        margin: 0px 8vw;
+        margin: 0px 8.6vw;
     }
     a{
         top: 10%;
