@@ -1,6 +1,7 @@
 import {
-  ITEMS_REQUESTED, CARDS_PER_SLIDE, renderSlide, renderButtons,
+  ITEMS_REQUESTED, createSlide, createButtons,
 } from './index';
+import { cardperslide } from './events';
 
 export function execute(searchQuery) {
   return new Promise(((resolve, reject) => {
@@ -18,8 +19,8 @@ export function execute(searchQuery) {
         resolve(this.response);
         const result = this.response && JSON.parse(this.response);
         const list = result.items;
-        renderButtons(CARDS_PER_SLIDE, list);
-        renderSlide(list);
+        createButtons(cardperslide, list);
+        createSlide(list);
       } else {
         const error = new Error(this.statusText);
         error.code = this.status;

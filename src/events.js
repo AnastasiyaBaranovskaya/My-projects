@@ -1,12 +1,38 @@
-import { videoList, width, count } from './index';
+import { videoList } from './index';
 
 export let current = 1;
+export let cardperslide = 4;
+let width = 25;
+let count = 4;
 const listElems = document.getElementsByClassName('wrapper');
 let xDown = null;
 let xDiff = null;
 let timeDown = null;
 let startEl = null;
 let position = 0;
+const stock = 100;
+const width1000 = window.matchMedia('(max-width: 1000px)');
+const width500 = window.matchMedia('(max-width: 500px)');
+function changeWidth() {
+  if (width1000.matches) {
+    width = 50;
+    count = 2;
+    cardperslide = 2;
+  }
+}
+changeWidth(width1000);
+width1000.addListener(changeWidth);
+
+function changeWidthmob() {
+  if (width500.matches) {
+    width = 100;
+    count = 1;
+    cardperslide = 1;
+  }
+}
+changeWidthmob(width500);
+width500.addListener(changeWidthmob);
+
 export function swipeEnd(e) {
   if (startEl !== e.target) return;
   const swipeThreshold = parseInt(startEl.getAttribute('data-swipe-threshold') || '20', 10);
@@ -58,27 +84,18 @@ export function mouseMove(e) {
   xDiff = xDown - xUp;
 }
 
-function FindElement(value) {
-  const All = document.body.getElementsByTagName('input');
-  for (let i = 0; i < All.length; i += 1) {
-    if (All[i].getAttribute('data-slide') === value) {
-      All[i].setAttribute('checked', 'checked');
-    }
-  }
-}
-
 function FindElementByAttr(value) {
   const All = document.body.getElementsByTagName('input');
-  for (let i = 0; i < All.length; i += 1) {
+  All.forEach((i) => {
     if (All[i].getAttribute('data-slide') === value) {
       All[i].setAttribute('checked', 'checked');
     }
-  }
+  });
 }
 
 export function makeSwipedleft() {
-  position = Math.max(position - width * count, -width * (listElems.length - count) - 100);
-  if (position === (-width * (listElems.length - count) - 100)) {
+  position = Math.max(position - width * count, -width * (listElems.length - count) - stock);
+  if (position === (-width * (listElems.length - count) - stock)) {
     position = (-width * (listElems.length - count));
     return false;
   }
@@ -86,14 +103,12 @@ export function makeSwipedleft() {
   const checkedbutton = document.querySelector('input[type="radio"]:checked');
   let n = +checkedbutton.getAttribute('data-slide');
   checkedbutton.removeAttribute('checked');
-  n += 1;
-  n = `${n}`;
+  n = `${n + 1}`;
   current += 1;
-  FindElement(n);
-  return true;
+  FindElementByAttr(n);
 }
 export function makeSwipedRight() {
-  position = Math.min(position + width * count, 100);
+  position = Math.min(position + width * count, stock);
   if (position === 100) {
     position = 0;
     return false;
@@ -106,5 +121,4 @@ export function makeSwipedRight() {
   k = `${k}`;
   current -= 1;
   FindElementByAttr(k);
-  return true;
 }
