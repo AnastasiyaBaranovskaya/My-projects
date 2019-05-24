@@ -1,5 +1,7 @@
 Youtube https://youtu.be/fmfVTYI1XuQ
+
 My Reval slides https://github.com/AnastasiyaBaranovskaya/mypresentation
+
 ++Hello, my name is Nastya and I would like to tell you about material UI.[slide]
 
 You might know that Material UI is based on UI framework that uses Google Material Design principles and provides a bunch of different isolated and independent components of react elements. They can be used as building blocks for building more complex user interface so the UI components themselves contain all the HTML, CSS and JavaScript built into them. The cool thing about those components is that they can actually be used without any dependendencies on external libraries like normalize the SS or JQuery or anything like that.[slide]
